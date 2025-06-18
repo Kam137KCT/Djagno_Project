@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView 
 from core.models import Teacher, Student, Assignment, Materials
+from django.urls import reverse_lazy
 
 # Create your views here.
 # def home(request):
@@ -20,7 +21,7 @@ class TeacherCreateView(CreateView):
     model = Teacher
     fields = ['full_name', 'email', 'dpartment', 'phone_no', 'join_date', 'user']
     template_name = 'teachers/teachers_form.html'
-    success_url = 'teacher_index'
+    success_url = reverse_lazy('teacher_index')
 
 class TeacherDetialView(DetailView):
     model = Teacher
@@ -31,13 +32,13 @@ class TeacherUpdateView(UpdateView):
     model = Teacher
     template_name = 'teachers/teacher_form.html'
     fields = ['full_name', 'email', 'dpartment', 'phone_no', 'join_date', 'user']
-    success_url = 'teacher.index'
+    success_url = reverse_lazy('teacher.index')
 
 class TeacherDeleteView(DeleteView):
     model = Teacher
     context_object_name = 'teacher'
     template_name = 'teachers/teacher_delete_confirm.html'
-    success_url = 'teacher.index'
+    success_url = reverse_lazy('teacher.index')
 
 # class StudentListView(ListView):
 #     model = Student
