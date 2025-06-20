@@ -11,10 +11,16 @@ from core.views import (
    StudentDetailView,
    StudentDeleteView,
    StudentUpdateView,
+   AssignmentListView,
+   AssignmentCreateView,
+   AssignmentDetailView,
+   AssignmentDeleteView,
+   AssignmentUpdateView
 )
 
 urlpatterns = [
    # path('', views.home, name='home') - function base views loading
+
    path('', HomePageView.as_view(), name='home'),
    
    # Teacher URLs
@@ -29,5 +35,13 @@ urlpatterns = [
    path('student/create/', StudentCreateView.as_view(), name='student.create'),
    path('student/<int:pk>/detail/', StudentDetailView.as_view(), name='student.detail'),
    path('student/<int:pk>/edit/', StudentUpdateView.as_view(), name='student.edit'),
-   path('student/<int:pk>/delete/', StudentDeleteView.as_view(), name='student.delete')
+   path('student/<int:pk>/delete/', StudentDeleteView.as_view(), name='student.delete'),
+
+   # Assignment URLs
+   path('assignment/list/', AssignmentListView.as_view(), name='assignment.index'),
+   path('assignment/create/', AssignmentCreateView.as_view(), name='assignment.create'),
+   path('assignment/<int:pk>/detail/', AssignmentDetailView.as_view(), name='assignment.detail'),
+   path('assignment/<int:pk>/edit/', AssignmentUpdateView.as_view(), name='assignment.edit'),
+   path('assignment/<int:pk>/delete/', AssignmentDeleteView.as_view(), name='assignment.delete'),
+
 ]
